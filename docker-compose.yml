@@ -1,0 +1,23 @@
+version: '3.7'
+
+x-frontend-env:
+  # application
+  &fenv
+  NUXT_HOST: ${FRONTEND_NUXT_HOST:-0.0.0.0}
+  NUXT_PORT: ${FRONTEND_NUXT_PORT:-3000}
+  API_URL: ${FRONTEND_API_URL:-localhost:5000/api}
+
+services:
+
+  frontend:
+    depends_on:
+      api:
+        condition: service_healthy
+    build:
+      context: ./frontend
+      dockerfile: ./docker/Dockerfile
+    hostname: labonneboite-frontend
+    environment:
+      <<: *fenv
+    ports:
+      - "3000:3000"

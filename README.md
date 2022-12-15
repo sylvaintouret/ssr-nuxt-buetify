@@ -12,9 +12,12 @@ curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - &&sudo apt-get
 
 ### create new project
 
+Creating a nuxt 3 project
+
 ``` yarn
-yarn create nuxt-app frontend
+npx nuxi init frontend
 ```
 
 
 
+yarn add @sidebase/nuxt-auth
