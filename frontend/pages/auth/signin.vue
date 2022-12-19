@@ -13,10 +13,5 @@
   </template>
   
   <script setup lang="ts">
-  import { ref } from 'vue'
-  import { definePageMeta, useSession } from '~~/.nuxt/imports'
-  definePageMeta({ auth: false })
-  const username = ref('')
-  const password = ref('')
-  const { signIn } = useSession()
+    
   </script>

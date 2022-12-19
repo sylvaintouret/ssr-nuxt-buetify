@@ -30,8 +30,9 @@ export default defineNuxtConfig({
         '@sidebase/nuxt-session',
         '@nuxtjs/robots',
         'nuxt-icon',
-        '@sidebase/nuxt-auth',
+        '@nuxtjs/tailwindcss',
         // must be placed last
+        
         ['@funken-studio/sitemap-nuxt-3', { generateOnBuild: true }],
 
     ],
@@ -40,9 +41,6 @@ export default defineNuxtConfig({
         configPath: 'server/config/robot.config',
     },
 
-    auth: {
-        // enableGlobalAppMiddleware: true,
-        basePath: '/api/auth'
-    }
+
 })
 

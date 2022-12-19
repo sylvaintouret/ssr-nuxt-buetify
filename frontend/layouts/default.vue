@@ -1,22 +1,22 @@
 
 <template>
-  <div>
-    <header>
-    <nav>
-      <ul>
-        <li v-for="(item, key) of items" :key="key">
-          <NuxtLink :to="item.to">{{ item.title }}</NuxtLink>
-        </li>
-      </ul>
-    </nav>
-  </header>
-  <slot />
-  </div>
+<div class="min-h-full">
+  
+  <AppBar/>
+  <AppHeader title="Something"/>
+  <main>
+    <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+      <!-- Replace with your content -->
+    <slot/>
+      <!-- /End replace -->
+    </div>
+  </main>
+</div>
   
 </template>
 
 
-<script>
+<script lang="ts">
 export default {
   name: 'DefaultLayout',
   data () {
@@ -41,11 +41,6 @@ export default {
           title: 'States Demo',
           icon: 'lightbulb',
           to: '/states'
-        },
-        {
-          title: 'Auth Demo',
-          icon: 'lightbulb',
-          to: '/auth'
         }
       ]
     }
