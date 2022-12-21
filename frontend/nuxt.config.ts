@@ -29,6 +29,7 @@ export default defineNuxtConfig({
     modules: [
         // '@sidebase/nuxt-session',
         // '@nuxtjs/i18n',
+        '@nuxtjs/tailwindcss',
         '@nuxtjs/robots',
         'nuxt-icon',
         '@pinia/nuxt',

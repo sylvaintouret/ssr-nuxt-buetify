@@ -8,14 +8,38 @@
       ```
     -->
     <div>
-        <nav>
-            <div>
-                <NuxtLink v-for="(nav, id) in navigation" :key="id" :to="nav.to"> {{ nav.name }}</NuxtLink>
-            </div>
+        <nav class="flex flex-row ">
 
-            <div>
-                <NuxtLink v-for="(menu, id) in userNavigation" :key="id" :to="menu.to"> {{ menu.name }}</NuxtLink>
+            <div class="navbar bg-base-300">
+
+                <div class="navbar-start">
+                    <div class="dropdown">
+                    <label tabindex="0" class="btn btn-ghost btn-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+                    </label>
+                    <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                        <li v-for="(nav, id) in navigation" :key="id"><NuxtLink  :to="nav.to"> {{ nav.name }}</NuxtLink></li>
+                    </ul>
+                    </div>
+                </div>
+
+                <div class="navbar-end">
+                    <div class="dropdown dropdown-end">
+                        <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                            <div class="w-10 rounded-full">
+                            <img :src="user.picture" />
+                            </div>
+                        </label>
+                        <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+                            <li v-for="(menu, id) in userNavigation" :key="id"><NuxtLink  :to="menu.to"> {{ menu.name }}</NuxtLink></li>
+                        </ul>
+                    </div>
+
+
+                </div>
+           
             </div>
+      
         </nav>
   
         <!-- -->
@@ -27,8 +51,27 @@
             </div>
         </main>
         
-        <footer>
-
+        <footer class="footer p-10 bg-neutral text-neutral-content">
+            <div>
+                <span class="footer-title">Services</span> 
+                <a class="link link-hover">Branding</a>
+                <a class="link link-hover">Design</a>
+                <a class="link link-hover">Marketing</a>
+                <a class="link link-hover">Advertisement</a>
+            </div> 
+            <div>
+                <span class="footer-title">Company</span> 
+                <a class="link link-hover">About us</a>
+                <a class="link link-hover">Contact</a>
+                <a class="link link-hover">Jobs</a>
+                <a class="link link-hover">Press kit</a>
+            </div> 
+            <div>
+                <span class="footer-title">Legal</span> 
+                <a class="link link-hover">Terms of use</a>
+                <a class="link link-hover">Privacy policy</a>
+                <a class="link link-hover">Cookie policy</a>
+            </div>
         </footer>
     </div>
   </template>
