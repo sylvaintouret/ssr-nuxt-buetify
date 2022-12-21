@@ -33,8 +33,9 @@
 </template>
 
 <script setup lang="ts">
+  import { useAuthStore } from '~~/store/auth.store';
   const showMenu = useState('showMenu', () => false)
-  const user = useCurrentUser();
+  const auth = useAuthStore()
 
 </script>
 

@@ -11,7 +11,4 @@ export class User{
       this.createdAt = data.createdAt || '';
     }
 
-    toJSON(){
-      return {...this}
-    }
   }
