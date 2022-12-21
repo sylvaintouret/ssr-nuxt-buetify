@@ -14,11 +14,9 @@
   },
   "dependencies": {
     "@funken-studio/sitemap-nuxt-3": "^4.0.4",
-    "@nuxtjs/i18n": "^7.3.0",
     "@nuxtjs/robots": "^3.0.0",
-    "@nuxtjs/tailwindcss": "^6.2.0",
     "@pinia/nuxt": "^0.4.6",
-    "@sidebase/nuxt-auth": "^0.3.0",
+    "buefy": "^0.9.22",
     "cookie": "^0.5.0",
     "js-cookie": "^3.0.1",
     "pinia": "^2.0.28",

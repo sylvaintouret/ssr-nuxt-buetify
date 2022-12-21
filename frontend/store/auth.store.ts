@@ -28,8 +28,10 @@ export const useAuthStore = defineStore(
             }
             user.value = new User()
 
-            const router = useRouter()
-            router.push(returnUrl.value || '/')
+            if (returnUrl.value){
+                const router = useRouter()
+                router.push(returnUrl.value)
+            }
 
         }
         const authenticate = async () => {

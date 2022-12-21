@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    ssr: true, 
+    
     app: {
   
         head: {
@@ -18,9 +18,8 @@ export default defineNuxtConfig({
       },
     
     // Global CSS: https://go.nuxtjs.dev/config-css
-    css: [
-    ],
-
+    css: [],
+  
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: ['@/plugins/persistedState.ts'],
 
@@ -32,15 +31,12 @@ export default defineNuxtConfig({
         // '@nuxtjs/i18n',
         '@nuxtjs/robots',
         'nuxt-icon',
-        '@nuxtjs/tailwindcss',
         '@pinia/nuxt',
         // must be placed last
         
         ['@funken-studio/sitemap-nuxt-3', { generateOnBuild: true }],
 
     ],
-
-
 
     runtimeConfig: {
         apiUrl: process.env.API_URL || 'http://localhost:5000/api',
@@ -49,6 +45,8 @@ export default defineNuxtConfig({
     robots: {
         configPath: 'server/config/robot.config',
     },
+
+    
 
 
 })
