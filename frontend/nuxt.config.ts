@@ -1,6 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+    ssr: true, 
     app: {
+  
         head: {
           charset: 'utf-8',
           viewport: 'width=device-width, initial-scale=1',
@@ -20,23 +22,30 @@ export default defineNuxtConfig({
     ],
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-    plugins: [
-    ],
+    plugins: ['@/plugins/persistedState.ts'],
 
     // Auto import components: https://go.nuxtjs.dev/config-components
     components: true,
-
+    
     modules: [
-        '@sidebase/nuxt-session',
+        // '@sidebase/nuxt-session',
+        // '@nuxtjs/i18n',
         '@nuxtjs/robots',
         'nuxt-icon',
         '@nuxtjs/tailwindcss',
+        '@pinia/nuxt',
         // must be placed last
         
         ['@funken-studio/sitemap-nuxt-3', { generateOnBuild: true }],
 
     ],
-    
+
+
+
+    runtimeConfig: {
+        apiUrl: process.env.API_URL || 'http://localhost:5000/api',
+        authProvider: process.env.AUTH_PROVIDER || 'gitlab',
+    },    
     robots: {
         configPath: 'server/config/robot.config',
     },

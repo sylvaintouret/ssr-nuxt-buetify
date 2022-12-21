@@ -1,3 +1,5 @@
+import { navItem } from '~~/models/nav';
+
 export default defineAppConfig({
     title: 'Hello Nuxt',
     app: {
@@ -7,22 +9,7 @@ export default defineAppConfig({
     },
     nav: {
       items: [
-        {
-          title: 'Home',
-          to: '/'
-        },
-        {
-          title: 'About',
-          to: '/about'
-        },
-        {
-          title: 'Session Demo',
-          to: '/session'
-        },
-        {
-          title: 'States Demo',
-          to: '/states'
-        }
+        new navItem('Home', '/', true),
       ]
     }}
   })
