@@ -7,6 +7,13 @@ export default defineNuxtConfig({
           htmlAttrs: {
             lang: 'fr'
           },
+          // Example to add header script
+          // script: [
+          //   {
+          //     src: "https://cdn.tagcommander.com/5233/uat/tc_lbb_31.js",
+          //     async: true
+          //   }
+          // ],
           charset: 'utf-8',
           viewport: 'width=device-width, initial-scale=1',
           title: 'My App',
