@@ -5,15 +5,14 @@ import { useAuthStore } from '~~/store/auth.store';
 export default defineNuxtRouteMiddleware((to, from) => {
     
     const auth = useAuthStore()
-    const  { app }  = useAppConfig();
-    const publicPages = app.publicRoutes;
-    const authRequired = !publicPages.includes(to.path);
 
-    if (authRequired && !auth.user) {
+    // back to home page if not logged in
+    if (!auth.user) {
+        console.log("not authenticated")
         auth.returnUrl = to.fullPath;
-        return to.path;
+        return navigateTo('/errors/403', { redirectCode: 403 })
     }
 
-    return to.path
-}
-)
+    // let him through
+    return navigateTo('/')
+})

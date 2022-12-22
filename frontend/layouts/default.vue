@@ -73,7 +73,8 @@
                 <span class="footer-title">Legal</span> 
                 <a class="link link-hover">Terms of use</a>
                 <a class="link link-hover">Privacy policy</a>
-                <a class="link link-hover">Cookie policy</a>
+                <NuxtLink class="link link-hover" to="/legal/cookie">Cookie policy</NuxtLink>
+                
             </div>
         </footer>
     </div>
