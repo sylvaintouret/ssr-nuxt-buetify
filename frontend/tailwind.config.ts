@@ -17,4 +17,15 @@ export default <Partial<Config>>{
     },
   },
   plugins: [require('daisyui')],
+  // daisyUI config (optional)
+  daisyui: {
+    styled: true,
+    base: true,
+    utils: true,
+    logs: true,
+    rtl: false,
+    prefix: "",
+    themes: ["light", "dark", "cupcake"],
+    darkTheme: "dark",
+  },
 }

@@ -2,8 +2,11 @@
 export default defineNuxtConfig({
     
     app: {
-  
+        
         head: {
+          htmlAttrs: {
+            lang: 'fr'
+          },
           charset: 'utf-8',
           viewport: 'width=device-width, initial-scale=1',
           title: 'My App',
@@ -14,7 +17,7 @@ export default defineNuxtConfig({
           link: [
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
           ]
-        }
+        },
       },
     
     // Global CSS: https://go.nuxtjs.dev/config-css
@@ -33,6 +36,8 @@ export default defineNuxtConfig({
         '@nuxtjs/robots',
         'nuxt-icon',
         '@pinia/nuxt',
+        '@nuxtjs/color-mode',
+        'nuxt-icon',
         // must be placed last
         
         ['@funken-studio/sitemap-nuxt-3', { generateOnBuild: true }],
@@ -46,6 +51,11 @@ export default defineNuxtConfig({
     robots: {
         configPath: 'server/config/robot.config',
     },
+    colorMode: {
+      preference: 'cupcake', // default value of $colorMode.preference
+      classSuffix: '',
+      dataValue: 'theme'
+    }
 
     
 

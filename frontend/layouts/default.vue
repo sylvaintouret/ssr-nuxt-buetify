@@ -17,24 +17,27 @@
                     <label tabindex="0" class="btn btn-ghost btn-circle">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
                     </label>
-                    <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li v-for="(nav, id) in navigation" :key="id"><NuxtLink  :to="nav.to"> {{ nav.name }}</NuxtLink></li>
+                    <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-300 rounded-box w-52">
+                        <li v-for="(nav, id) in navigation" :key="id"><NuxtLink  :to="nav.to" > {{  nav.name  }}</NuxtLink></li>
                     </ul>
                     </div>
                 </div>
 
                 <div class="navbar-end">
+                    <button tabindex="0" class="btn  btn-ghost btn-circle avatar" @click="toggleTheme">
+                        <Icon name="carbon:color-switch" size="1.75em"/>
+                    </button>
                     <div class="dropdown dropdown-end">
-                        <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-                            <div class="w-10 rounded-full">
-                            <img :src="user.picture" />
-                            </div>
+                        <label v-if="user.loggedIn" tabindex="0" class="btn  btn-ghost btn-circle avatar">
+                            <Icon :name="user.picture" size="1.75em"/>
                         </label>
-                        <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
-                            <li v-for="(menu, id) in userNavigation" :key="id"><NuxtLink  :to="menu.to"> {{ menu.name }}</NuxtLink></li>
+                        <label v-if="!user.loggedIn" tabindex="0" class="btn  btn-ghost btn-circle avatar">
+                            <Icon  name="carbon:login" size="1.75em"/>
+                        </label>
+                        <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-300 rounded-box w-52">
+                            <li v-for="(menu, id) in userNavigation" :key="id"><NuxtLink  :to="menu.to"> {{ menu.name }}  <div v-if="menu.badge" :class="menu.badge.class">{{ menu.badge.content }} </div> </NuxtLink></li>
                         </ul>
                     </div>
-
 
                 </div>
            
@@ -51,7 +54,7 @@
             </div>
         </main>
         
-        <footer class="footer p-10 bg-neutral text-neutral-content">
+        <footer class="footer p-10 ">
             <div>
                 <span class="footer-title">Services</span> 
                 <a class="link link-hover">Branding</a>
@@ -97,21 +100,21 @@ const userNavigation = computed(() => {
 
     return user.value.loggedIn ? (
         [
-            { name: 'Your Profile', to: '/user/profile' },
-            { name: 'Settings', to: '/settings' },
-            { name: 'Sign out', to: '/auth/logout' },
+            { name: 'Your Profile', to: '/user/profile' , badge: { class: 'badge', content: 'new!'}},
+            { name: 'Sign out', to: '/auth/logout' , badge: null},
         ]
         ) : (
         [
-            { name: 'Settings', to: '/settings' },
-            { name: 'Sign in', to: '/auth/login' },
+            { name: 'Sign in', to: '/auth/login' , badge: null},
         ])
 
 }) 
 
-
-
-
+// theme
+const colorMode = useColorMode();
+const toggleTheme = () => {
+    colorMode.preference = colorMode.preference == 'dark' ? 'light' : 'dark';  
+}
 
 
 </script>
