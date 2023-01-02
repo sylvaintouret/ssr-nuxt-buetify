@@ -7,12 +7,11 @@ export default defineNuxtRouteMiddleware((to, from) => {
     const auth = useAuthStore()
 
     // back to home page if not logged in
-    if (!auth.user) {
-        console.log("not authenticated")
-        auth.returnUrl = to.fullPath;
-        return navigateTo('/errors/403', { redirectCode: 403 })
+    if (!auth.user.loggedIn) {
+        // auth.returnUrl = to.fullPath;
+        throw createError({ statusCode: 403, statusMessage: 'You must log in.' })
+        return navigateTo('/')
     }
+    
 
-    // let him through
-    return navigateTo('/')
 })

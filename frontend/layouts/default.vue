@@ -50,8 +50,17 @@
             <div>
             <!-- Replace with your content -->
             <slot />
+            <CookieControl locale="en" >
+
+                <template #modal class="modal">
+                    <h3>Modal title</h3>
+                    <p>Modal description</p>
+                </template>
+
+            </CookieControl>
             <!-- /End replace -->
             </div>
+
         </main>
         
         <footer class="footer p-10 ">
@@ -117,7 +126,15 @@ const toggleTheme = () => {
     colorMode.preference = colorMode.preference == 'dark' ? 'light' : 'dark';  
 }
 
+// cookie 
+const {
+  cookiesEnabled,
+  cookiesEnabledIds,
+  isConsentGiven,
+  isModalActive,
+  moduleOptions
+} = useCookieControl()
+
 
 </script>
-
 
