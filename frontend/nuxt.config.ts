@@ -126,8 +126,8 @@ const runTimeOptions = {
     cookies: {
       necessary: [
         {
-          description: 'Permet l\'authentification utilisateur et la mémorisation du thème',
-          name: 'Nécessaire',
+          description: 'For keeping user loggedIn and also theme management.',
+          name: 'Necessary',
         }
       ],
       optional: [
@@ -135,7 +135,7 @@ const runTimeOptions = {
           id: 'ga', // if unset, the slugified name will be used
           name: 'Google Analytics',
           src: 'https://www.googletagmanager.com/gtag/js?id=12345',
-          // targetCookieIds: ['cookie_control_consent', 'cookie_control_enabled_cookies']
+          description: 'Track useage and actions taken accross our site for quality reasons.'
         }
       ],
     }

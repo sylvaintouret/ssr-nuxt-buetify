@@ -1,8 +1,8 @@
 <template>
-    <div class="flex gap-10">
+    <div class="grid grid-cols-[50px_150px_1fr] gap-10">
         <div v-if="disabled" class="flex-none w-14 h-14"><input type="checkbox" class="toggle" checked="true" disabled="true"/></div>
         <div v-if="!disabled" class="flex-none w-14 h-14"><input type="checkbox" class="toggle" v-model="state" @change="onChange"/></div>
-        <div class="flex-none w-50 h-14">{{ cookie.name || cookie.id}}</div>
+        <div class="flex-none w-100 h-14">{{ cookie.name || cookie.id}}</div>
         <div >{{ cookie.description }}</div>
     </div>
 </template>
