@@ -11,17 +11,29 @@
 
                 <div class="card card-bordered bg-base-100 shadow-md">
                     <div class="card-body">
-                        <h2 class="card-title"><img src="~/assets/image/boite-a-cookies.png" height=50 width=50 alt="cookie_picture"/>Cookies</h2>
+                        <h2 class="card-title"><Icon name="carbon:cookie" />Cookies</h2> 
 
-                        <div class="card-actions justify-end">
-                            <button class="btn" @click="isModalActive = true" v-text="'Configure'"></button>
-                            <button class="btn btn-outline btn-error" @click="deleteConsent()" v-if="cookiesEnabledIds && isConsentGiven" v-text="'Delete consent'">  </button>
+                        
+
+                        <h3 class="card-title">Necessary</h3>
+                        <CookieControlItem v-for='cookie in moduleOptions.cookies.necessary' :cookie="cookie" :disabled=true></CookieControlItem>
+
+                        <h3 class="card-title">Optional</h3>
+                        <CookieControlItem v-for='cookie in moduleOptions.cookies.optional' :cookie="cookie"></CookieControlItem>
+
+                        <div class="flex items-center justify-between" v-if="checkConsent()">
+                            <h3 class="card-title">Delete consent</h3>
+                            <button class="btn btn-outline btn-error" @click="setConsent({declineAll: true, consent: false})" v-if="cookiesEnabledIds && checkConsent()"> Delete </button>
                         </div>
                     </div>
+
+                    
                 </div>
 
+                
+
+
             </div>
-            
 
         </div>
     </div>
@@ -29,15 +41,10 @@
 
 
 <script lang="ts" setup>
-const {
-  cookiesEnabled,
-  cookiesEnabledIds,
-  isConsentGiven,
-  isModalActive,
-  moduleOptions
-} = useCookieControl()
+import { useCookieControlStore } from '~~/store/cookieConsent.store';
+const {setConsent, cookiesEnabledIds, isConsentGiven, moduleOptions} = useCookieControlStore()
 
-const deleteConsent = () => {
-    isConsentGiven.value = false
-    }
+
+
+const checkConsent = () => isConsentGiven
 </script>

@@ -98,5 +98,6 @@ export const useAuthStore = defineStore(
     {
     persistedState: {
         // store options goes here
+        includePaths: ['user']
     }
     });

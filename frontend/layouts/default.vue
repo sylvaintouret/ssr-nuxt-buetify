@@ -24,6 +24,7 @@
                 </div>
 
                 <div class="navbar-end">
+
                     <button tabindex="0" class="btn  btn-ghost btn-circle avatar" @click="toggleTheme">
                         <Icon name="carbon:color-switch" size="1.75em"/>
                     </button>
@@ -50,14 +51,8 @@
             <div>
             <!-- Replace with your content -->
             <slot />
-            <CookieControl locale="en" >
+            <CookieControl />
 
-                <template #modal class="modal">
-                    <h3>Modal title</h3>
-                    <p>Modal description</p>
-                </template>
-
-            </CookieControl>
             <!-- /End replace -->
             </div>
 
@@ -126,14 +121,7 @@ const toggleTheme = () => {
     colorMode.preference = colorMode.preference == 'dark' ? 'light' : 'dark';  
 }
 
-// cookie 
-const {
-  cookiesEnabled,
-  cookiesEnabledIds,
-  isConsentGiven,
-  isModalActive,
-  moduleOptions
-} = useCookieControl()
+
 
 
 </script>

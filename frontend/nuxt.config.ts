@@ -122,6 +122,25 @@ const appOptions = {
 const runTimeOptions = {
   apiUrl: process.env.API_URL || 'http://localhost:5000/api',
   authProvider: process.env.AUTH_PROVIDER || 'gitlab',
+  cookiesConsent: {
+    cookies: {
+      necessary: [
+        {
+          description: 'Permet l\'authentification utilisateur et la mémorisation du thème',
+          name: 'Nécessaire',
+        }
+      ],
+      optional: [
+        {
+          id: 'ga', // if unset, the slugified name will be used
+          name: 'Google Analytics',
+          src: 'https://www.googletagmanager.com/gtag/js?id=12345',
+          // targetCookieIds: ['cookie_control_consent', 'cookie_control_enabled_cookies']
+        }
+      ],
+    }
+  },
+  
 }
 
 
@@ -130,7 +149,9 @@ export default defineNuxtConfig({
     app: appOptions,
     
     // Global CSS: https://go.nuxtjs.dev/config-css
-    css: [],
+    css: [
+      'assets/css/cookies.css'
+    ],
   
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: ['@/plugins/persistedState.ts'],
@@ -141,13 +162,14 @@ export default defineNuxtConfig({
     modules: [
         // '@sidebase/nuxt-session',
         // '@nuxtjs/i18n',
+        // ['@dargmuesli/nuxt-cookie-control', cookieOptions],
         '@nuxtjs/tailwindcss',
         '@nuxtjs/robots',
         'nuxt-icon',
         '@pinia/nuxt',
         '@nuxtjs/color-mode',
         'nuxt-icon',
-        ['@dargmuesli/nuxt-cookie-control', cookieOptions],
+        
         // must be placed last
         
         ['@funken-studio/sitemap-nuxt-3', { generateOnBuild: true }],

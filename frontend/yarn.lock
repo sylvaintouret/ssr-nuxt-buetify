@@ -815,7 +815,7 @@
     h3 "^1.0.1"
     unstorage "^1.0.1"
 
-"@sindresorhus/slugify@2.1.1":
+"@sindresorhus/slugify@2.1.1", "@sindresorhus/slugify@^2.1.1":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@sindresorhus/slugify/-/slugify-2.1.1.tgz#3076b0e95dd2cd05e5da2dd8efa38fe153a0cfe0"
   integrity sha512-XokPHZ+q6FtQGEi1hnfvARVJJVPEhwHQTPHPPuNHaN6zcHjzYNynhhHMopa1wNPqLAFOwpsbintunEqWecXJMg==

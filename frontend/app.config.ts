@@ -4,6 +4,5 @@ import { navItem } from '~~/models/nav';
 
 export default defineAppConfig({
     title: 'Hello Nuxt',
-    app: {}
-
+    app: {},
 })
