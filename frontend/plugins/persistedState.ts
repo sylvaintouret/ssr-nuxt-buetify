@@ -1,37 +1,44 @@
-import { createPersistedStatePlugin } from 'pinia-plugin-persistedstate-2'
-import { defineNuxtPlugin } from "#app";
 
-// this backups the store in the localstorage
-// export default defineNuxtPlugin((nuxtApp) => {
-//   if (process.client) {
-//     nuxtApp.$pinia.use(createPersistedStatePlugin())
-//   }
+//https://user-images.githubusercontent.com/3810177/183082317-5fc12067-52a4-4b9a-8967-132642f7877f.png
 
-// });
-
-
-// this backups the store in cookies
-import Cookies from 'js-cookie'
-import cookie from 'cookie'
+import { createPersistedState } from 'pinia-plugin-persistedstate'
+import cookies from 'cookie-universal'
 
 export default defineNuxtPlugin((nuxtApp) => {
-// export default function ({ $pinia, ssrContext }) {
+
+  const event = nuxtApp.ssrContext 
+  const Cookies = cookies(event?.req, event?.res)
+
+  function handleCookie(data: any, key: string, value = '', numberOfCookies = 5, cookie = ''){
+
+    for (let i=0; i < numberOfCookies; i++){
+      if (value){
+        const length = Math.ceil(value.length / numberOfCookies)
+        const start = i * length;
+        const end = start + length 
+        data(key + (i || ''), value.toString()?.substring(start, end), {
+          path: '/',
+          maxAge: 60 * 60 * 24 * 365
+        })
+      } else { cookie += data(key + (i || ''))}
+    }
+
+    return cookie
+
+  }
+
+
   nuxtApp.$pinia.use(
-    createPersistedStatePlugin({
+    createPersistedState({
       storage: {
-        getItem: (key) => {
-          // See https://nuxtjs.org/guide/plugins/#using-process-flags
-          if (process.server) {
-            const parsedCookies = cookie.parse(nuxtApp.ssrContext.req.headers.cookie)
-            return parsedCookies[key]
-          } else {
-            return Cookies.get(key)
-          }
+        getItem: (key : string) => {
+          return handleCookie(Cookies.get, key)
         },
-        // Please see https://github.com/js-cookie/js-cookie#json, on how to handle JSON.
-        setItem: (key, value) =>
-          Cookies.set(key, value, { expires: 365, secure: false }),
-        removeItem: (key) => Cookies.remove(key),
+        setItem: (key : string, value : string) => {
+          handleCookie(Cookies.set, key , value)
+        }
       },
     }),
   )});
+
+

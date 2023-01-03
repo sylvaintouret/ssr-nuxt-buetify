@@ -27,7 +27,6 @@ export const useAuthStore = defineStore(
                     credentials: 'include'}).catch((error) => user.value = new User())
             }
             user.value = new User()
-
             if (returnUrl.value){
                 const router = useRouter()
                 router.push(returnUrl.value)
@@ -82,6 +81,7 @@ export const useAuthStore = defineStore(
             if (response){
                 user.value = new User(response)
             }
+
         }
 
 
@@ -96,8 +96,8 @@ export const useAuthStore = defineStore(
         }
       }, 
     {
-    persistedState: {
-        // store options goes here
-        includePaths: ['user']
-    }
+        persist: {
+            paths: ['user'],
+          },
+
     });

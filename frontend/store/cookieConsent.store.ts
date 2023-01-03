@@ -125,8 +125,8 @@ export const useCookieControlStore = defineStore(
         }
     }, 
     {
-        persistedState: {
-            // store options goes here
-            includePaths: ['isConsentGiven' , 'cookiesEnabled', 'cookiesEnabledIds', 'isModalActive']
-        }
+        
+        persist: {
+            paths: ['isConsentGiven', 'cookiesEnabled', 'cookiesEnabledIds'],
+          },
     });
