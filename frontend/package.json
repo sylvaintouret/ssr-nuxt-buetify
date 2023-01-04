@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "@dargmuesli/nuxt-cookie-control": "^2.2.2",
-    "@sidebase/nuxt-session": "^0.2.6",
+    "@pinia-plugin-persistedstate/nuxt": "^1.0.0",
     "nuxt": "3.0.0",
     "nuxt-icon": "^0.1.8"
   },
@@ -25,7 +25,6 @@
     "daisyui": "^2.46.0",
     "js-cookie": "^3.0.1",
     "moment": "^2.29.4",
-    "pinia": "^2.0.28",
-    "pinia-plugin-persistedstate": "^3.0.2"
+    "pinia": "^2.0.28"
   }
 }

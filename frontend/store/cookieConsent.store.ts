@@ -7,9 +7,12 @@ export const useCookieControlStore = defineStore(
     'cookieControlStore',
     () => {
 
-        const isConsentGiven = ref<boolean>(false)
-        const cookiesEnabled = ref<Cookie[]>([])
-        const cookiesEnabledIds = ref<string[]>([])
+        // callback previous sate at startup
+        const cookie = useCookie("cookieControlStore")
+
+        const isConsentGiven = ref<boolean>(cookie.value.isConsentGiven || false)
+        const cookiesEnabled = ref<Cookie[]>(cookie.value.cookiesEnabled || [])
+        const cookiesEnabledIds = ref<string[]>(cookie.value.cookiesEnabledIds || [])
         const isModalActive = ref<boolean>()
         const moduleOptions = ref<ModuleOptions>(<ModuleOptions>useRuntimeConfig().cookiesConsent)
                 
@@ -125,8 +128,5 @@ export const useCookieControlStore = defineStore(
         }
     }, 
     {
-        
-        persist: {
-            paths: ['isConsentGiven', 'cookiesEnabled', 'cookiesEnabledIds'],
-          },
+        persist: true
     });

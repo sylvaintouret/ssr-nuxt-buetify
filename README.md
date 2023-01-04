@@ -10,14 +10,9 @@ First time trying this framework. Looks like fun
 curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - &&sudo apt-get install -y nodejs
 ```
 
-### create new project
+### develop
 
-Creating a nuxt 3 project
-
-``` yarn
-npx nuxi init frontend
+``` bash
+make develop
 ```
 
-
-
-yarn add @sidebase/nuxt-auth

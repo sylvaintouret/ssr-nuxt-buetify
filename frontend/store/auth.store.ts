@@ -8,9 +8,15 @@ export const useAuthStore = defineStore(
     () => {
         const { apiUrl, authProvider } = useRuntimeConfig();
         
+        // call back previous state here
+        const cookie = useCookie("authStore")
+
+        const memUser = cookie.value.user || {}
+        
+       
         const provider = ref(authProvider);
         const baseUrl = ref(apiUrl);
-        const user = ref(new User());
+        const user = ref(new User(memUser));
         const returnUrl = ref('');
 
 
@@ -18,6 +24,7 @@ export const useAuthStore = defineStore(
         const login = () => {
             window.location.href = `${baseUrl.value}/auth/login-redirect?provider=${ provider.value || 'gitlab'}`
         }
+
         const logout = async () => {
             
 
@@ -82,6 +89,8 @@ export const useAuthStore = defineStore(
                 user.value = new User(response)
             }
 
+            return response
+
         }
 
 
@@ -92,7 +101,8 @@ export const useAuthStore = defineStore(
             logout,
             authenticate,
             baseUrl,
-            provider
+            provider,
+            checkUser
         }
       }, 
     {
