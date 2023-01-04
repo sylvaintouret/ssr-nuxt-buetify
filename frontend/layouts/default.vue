@@ -29,8 +29,9 @@
                         <Icon name="carbon:color-switch" size="1.75em"/>
                     </button>
                     <div class="dropdown dropdown-end">
+                        
                         <label v-if="user.loggedIn" tabindex="0" class="btn  btn-ghost btn-circle avatar">
-                            <Icon :name="user.picture" size="1.75em"/>
+                            <Avatar :user="user"/>
                         </label>
                         <label v-if="!user.loggedIn" tabindex="0" class="btn  btn-ghost btn-circle avatar">
                             <Icon  name="carbon:login" size="1.75em"/>
